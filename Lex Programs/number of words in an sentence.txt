@@ -1,0 +1,16 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+%option noyywrap
+
+%%
+"old_word"    { printf("new_word"); }
+.|\n    { putchar(yytext[0]); }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
